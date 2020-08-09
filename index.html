@@ -10,7 +10,6 @@
 			border-bottom: 1px solid black;
 			border-left: 1px solid black;
 			position: relative;
-			background-image: repeating-linear-gradient(to top, transparent, transparent 19px, rgba(0, 0, 0, 0.2) 19px, rgba(0, 0, 0, 0.2) 20px);
 			background-repeat: no-repeat;
 		}
 
@@ -53,9 +52,12 @@
 
 		const BAR_SIZE = 20;
     
-    // Calculate draw board size
+    		// Calculate draw board size
 		chart.style.height = Math.max(...arr) * BAR_SIZE + BAR_SIZE + 'px';
 		chart.style.width = arr.length * BAR_SIZE * 2 + BAR_SIZE + 'px';
+		
+		// Grid lines
+		chart.style.backgroundImage = `repeating-linear-gradient(to top, transparent, transparent ${BAR_SIZE - 1}px, rgba(0, 0, 0, 0.2) ${BAR_SIZE - 1}px, rgba(0, 0, 0, 0.2) ${BAR_SIZE}px)`;
 
 		const drawBar = (item, index) => {
 			let div = document.createElement('div');
