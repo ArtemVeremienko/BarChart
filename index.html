@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bar Chart</title>
+	<style>
+		#chart {
+			border-bottom: 1px solid black;
+			border-left: 1px solid black;
+			position: relative;
+			background-image: repeating-linear-gradient(to top, transparent, transparent 9px, rgba(0, 0, 0, 0.2) 9px, rgba(0, 0, 0, 0.2) 10px);
+			background-repeat: no-repeat;
+		}
+
+		#chart::before,
+		#chart::after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 5px 10px 5px;
+			border-color: black transparent;
+		}
+
+		#chart::before {
+			top: 0;
+			left: 0;
+			transform: translateX(-5px);
+		}
+
+		#chart::after {
+			right: 0;
+			bottom: 0;
+			transform: rotate(90deg) translateX(5px);
+		}
+
+		.bar {
+			position: absolute;
+			bottom: 0;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="chart"></div>
+
+	<script>
+		const arr = [5,8,2,1,15,2,3,5,9,11,10,4,3,14,1,7,10,3,2,13];
+
+		const BAR_WIDTH = 20;
+    
+    // Calculate draw board size
+		chart.style.height = Math.max(...arr) * BAR_WIDTH + BAR_WIDTH + 'px';
+		chart.style.width = arr.length * BAR_WIDTH * 2 + BAR_WIDTH + 'px';
+
+		const drawBar = (item, index) => {
+			let div = document.createElement('div');
+			div.className = 'bar';
+			div.textContent = item;
+			div.style.height = item * BAR_WIDTH + 'px';
+			div.style.width = BAR_WIDTH + 'px';
+			div.style.left = index * BAR_WIDTH * 2 + BAR_WIDTH + 'px';
+			// Colorize
+			if (item <= 5) {
+				div.style.backgroundColor = 'green';
+			} else if (item > 5 && item <= 10) {
+				div.style.backgroundColor = 'yellow';
+			} else {
+				div.style.backgroundColor = 'red';
+			}
+			
+			chart.append(div);
+		}
+
+		arr.forEach(drawBar);
+	</script>
+</body>
+
+</html>
