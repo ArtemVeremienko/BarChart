@@ -51,19 +51,19 @@
 	<script>
 		const arr = [5,8,2,1,15,2,3,5,9,11,10,4,3,14,1,7,10,3,2,13];
 
-		const BAR_WIDTH = 20;
+		const BAR_SIZE = 20;
     
     // Calculate draw board size
-		chart.style.height = Math.max(...arr) * BAR_WIDTH + BAR_WIDTH + 'px';
-		chart.style.width = arr.length * BAR_WIDTH * 2 + BAR_WIDTH + 'px';
+		chart.style.height = Math.max(...arr) * BAR_SIZE + BAR_SIZE + 'px';
+		chart.style.width = arr.length * BAR_SIZE * 2 + BAR_SIZE + 'px';
 
 		const drawBar = (item, index) => {
 			let div = document.createElement('div');
 			div.className = 'bar';
 			div.textContent = item;
-			div.style.height = item * BAR_WIDTH + 'px';
-			div.style.width = BAR_WIDTH + 'px';
-			div.style.left = index * BAR_WIDTH * 2 + BAR_WIDTH + 'px';
+			div.style.height = item * BAR_SIZE + 'px';
+			div.style.width = BAR_SIZE + 'px';
+			div.style.left = index * BAR_SIZE * 2 + BAR_SIZE + 'px';
 			// Colorize
 			if (item <= 5) {
 				div.style.backgroundColor = 'green';
