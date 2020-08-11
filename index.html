@@ -10,7 +10,6 @@
 			border-bottom: 1px solid black;
 			border-left: 1px solid black;
 			position: relative;
-			background-repeat: no-repeat;
 		}
 
 		#chart::before,
@@ -48,8 +47,10 @@
 	<div id="chart"></div>
 
 	<script>
+		// Data for drawing
 		const arr = [5,8,2,1,15,2,3,5,9,11,10,4,3,14,1,7,10,3,2,13];
-
+		
+		// Bars size and graph size
 		const BAR_SIZE = 20;
     
     		// Calculate draw board size
@@ -75,10 +76,12 @@
 				div.style.backgroundColor = 'red';
 			}
 			
-			chart.append(div);
+			return div;
 		}
-
-		arr.forEach(drawBar);
+		
+		// Plots all bars and Draws result to #chart
+		chart.append(...arr.map(drawBar));
+		
 	</script>
 </body>
 
